@@ -2,6 +2,7 @@
 
 import curses
 import sys
+import requests
 
 try:
     import youtube_dl
@@ -81,6 +82,12 @@ def printOps(scr: "curses._CursesWindow",
 
 
 def main(videoUrl):
+    try:
+        requests.get(videoUrl)
+    except Exception:
+        print("Couldn't connect with given URL! Please check "
+              "your connection and the video's URL.")
+        exit(1)
     scr = setupScr()
     cL = 0
     quts = [0, 0]
