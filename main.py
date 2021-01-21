@@ -80,11 +80,7 @@ def printOps(scr: "curses._CursesWindow",
     scr.refresh()
 
 
-def main():
-    if (len(sys.argv) != 2):  # Requires video URL as only input
-        print(HELPER)
-        exit(1)
-    videoUrl = sys.argv[1]
+def main(videoUrl):
     scr = setupScr()
     cL = 0
     quts = [0, 0]
@@ -146,7 +142,16 @@ def main():
 
 
 if __name__ == "__main__":
+    videoUrl = ""
+    if (len(sys.argv) == 1):  # Requires video URL as only input
+        videoUrl = input("Video URL: ")
+    elif (len(sys.argv) > 2 or
+          sys.argv[1] == "-h" or sys.argv[1] == "--help"):
+        print(HELPER)
+        cleanupExit(0)
+    else:
+        videoUrl = sys.argv[1]
     try:
-        main()
+        main(videoUrl)
     except KeyboardInterrupt:
         cleanupExit(1)
