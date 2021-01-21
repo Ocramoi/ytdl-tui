@@ -3,4 +3,4 @@ TUI interface for `youtube-dl`, allowing the user to select video and audio qual
 
 
 ## Requirements
-    * [youtube-dl](https://github.com/ytdl-org/youtube-dl)
+   - [youtube-dl](https://github.com/ytdl-org/youtube-dl)
